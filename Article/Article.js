@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Working with less in 2020',
+    date: 'Jan 1st, 2020',
+    firstParagraph: `I am groot I am groot I am groot! I am groot I am groot - I am groot, I am groot. I am groot I am groot... I am groot I am groot I am groot; I am groot I am groot. I am groot I am groot I am groot, I am groot, I am groot
+          I am groot. I am groot, I am groot. I am groot. I am groot, I am groot - I am groot... I am groot I am groot I am groot; I am groot I am groot I am groot, I am groot I am groot?! I am groot I am groot, I am groot.
+          I am groot I am groot I am groot I am groot I am groot! I am groot I am groot - I am groot I am groot, I am groot I am groot I am groot I am groot I am groot; I am groot I am groot? `,
+
+    secondParagraph: `I am groot, I am groot. I am groot. I am groot, I am groot, I am groot. I am groot I am groot, I am groot. I am groot I am groot, I am groot, I am groot I am groot. I am groot! I am groot I am groot, I am groot;
+          I am groot I am groot I am groot? I am groot, I am groot. I am groot. I am groot, I am groot - I am groot I am groot, I am groot I am groot I am groot! I am groot, I am groot. I am groot. I am groot, I am groot
+          I am groot, I am groot I am groot, I am groot, I am groot I am groot. I am groot I am groot - I am groot - I am groot... I am groot I am groot I am groot I am groot I am groot I am groot I am groot?! I am groot
+          I am groot - I am groot I am groot I am groot. I am groot. I am groot I am groot... I am groot I am groot I am groot I am groot I am groot? `,
+
+    thirdParagraph: `I am groot I am groot - I am groot... I am groot I am groot I am groot I am groot. I am groot. I am groot! I am groot I am groot, I am groot I am groot I am groot I am groot I am groot; I am groot I am groot? I am groot!
+          I am groot I am groot, I am groot I am groot, I am groot I am groot?! I am groot! I am groot I am groot, I am groot I am groot, I am groot I am groot, I am groot, I am groot I am groot. I am groot, I am groot.
+          I am groot. I am groot, I am groot, I am groot. I am groot I am groot... I am groot I am groot I am groot?! I am groot, I am groot... I am groot I am groot I am groot I am groot, I am groot I am groot. I am groot.`
   }
 ];
 
@@ -112,3 +128,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function create (obj){
+const surrondingDiv = document.createElement("div");
+const title = document.createElement('h2');
+const date = document.createElement('p');
+const p1 = document.createElement('p');
+const p2 = document.createElement('p');
+const p3 = document.createElement('p');
+const button = document.createElement('span');
+const button2 = document.createElement('span');
+
+title.textContent = obj.title;
+date.textContent = obj.date;
+p1.textContent = obj.firstParagraph;
+p2.textContent = obj.secondParagraph;
+p3.textContent = obj.thirdParagraph;
+button.textContent = '\u25bc';
+
+surrondingDiv.appendChild(title);
+surrondingDiv.appendChild(date);
+surrondingDiv.appendChild(p1);
+surrondingDiv.appendChild(p2);
+surrondingDiv.appendChild(p3);
+surrondingDiv.appendChild(button);
+
+surrondingDiv.classList.add('article');
+title.classList.add('title');
+button.classList.add('expandButton');
+
+console.log(title.textContent);
+button.addEventListener('click', event =>{
+  console.log('clicked button!');
+  surrondingDiv.classList.toggle('article-open');
+  button = button2;
+})
+
+
+
+return surrondingDiv;
+}
+
+
+const artilces = document.querySelector('.articles');
+data.forEach(element => {
+  artilces.appendChild(create(element));
+});
